@@ -1,0 +1,61 @@
+<style>
+
+    .wsod-screen {
+        font-family: Tahoma, Geneva, sans-serif;
+        font-weight: normal;
+        padding: 15px 5px;
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        z-index: 9999999999999;
+        background-color: #ffffff;
+        color: #656565;
+    }
+
+    .wsod-screen > .box {
+        text-align: center;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transform: -webkit-translate(-50%, -50%);
+        transform: -moz-translate(-50%, -50%);
+        transform: -ms-translate(-50%, -50%);
+    }
+
+    .wsod-screen > .box h1 {
+        font-size: 50px;
+    }
+
+    .wsod-screen > .box .additional {
+        opacity: 0.5;
+    }
+
+
+</style>
+
+<div class="wsod-screen">
+
+    <div class="box">
+
+        <h1>Error :( </h1>
+
+        <p>
+            We are working hard to resolve it.
+        </p>
+
+      {{#if message}}
+          <p class="additional">
+            Additional information: {{message}}
+          </p>
+      {{/if}}
+
+
+    </div>
+
+  {{error}}
+</div>
+

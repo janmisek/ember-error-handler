@@ -1,6 +1,7 @@
 import BaseConsumer from './base-consumer';
 import Ember from 'ember';
 import {EmberErrorHandlerError} from './../errors';
+import {getConfig, getEnvironment} from './../-tools';
 const {getOwner, computed} = Ember;
 
 export default BaseConsumer.extend({
@@ -9,7 +10,22 @@ export default BaseConsumer.extend({
 
     descriptors: computed(() => []),
 
-    component: 'ember-error-handler/wsod-screen',
+    component: computed(function() {
+      let component = this.get('config')['wsod-component'];
+      if (!component) {
+        const env = this.get('environment');
+        component = 'ember-error-handler/wsod-screen-'+env;
+      }
+      return component;
+    }),
+
+    config: computed(function() {
+      return getConfig(this);
+    }),
+
+    environment: computed(function() {
+      return getEnvironment(this);
+    }),
 
     consume(descriptor) {
         try {
