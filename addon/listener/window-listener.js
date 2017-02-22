@@ -1,4 +1,4 @@
-import BaseListener from './base-handler';
+import BaseListener from './base-listener';
 import ErrorDescriptor from '../error-descriptor';
 
 export default BaseListener.extend({
@@ -13,8 +13,9 @@ export default BaseListener.extend({
                 };
             }
 
-            manager.handleError(
+            manager.consume(
                 ErrorDescriptor.create({
+                    source: 'window',
                     listener: this,
                     error
                 })

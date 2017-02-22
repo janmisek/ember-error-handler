@@ -1,2 +1,1 @@
-import listener from 'ember-error-handler/listener/window-listener';
-export default listener
+export {default} from 'ember-error-handler/listener/window-listener';

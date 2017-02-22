@@ -2,8 +2,9 @@ import BaseConsumer from './base-consumer';
 
 export default BaseConsumer.extend({
 
-    consume (error) {
-        console.error(error.getPlainText());
+    consume (descriptor) {
+        // eslint-disable-next-line no-console
+        console.error(descriptor.get('source'), descriptor.get('plainText'));
         return true;
     }
 

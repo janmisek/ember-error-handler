@@ -1,34 +1,43 @@
 import BaseConsumer from './base-consumer';
 import Ember from 'ember';
+import {EmberErrorHandlerError} from './../errors';
 const {getOwner, computed} = Ember;
 
 export default BaseConsumer.extend({
 
     isRendered: false,
 
-    errors: computed(() => []),
-
-    parseError: function (error) {
-        return {
-            error: error,
-            description: error.getDescription(),
-            message: error.getPlainMessage(),
-            log: error.getLog(),
-            stackTrace: error.getPlainText().replace(new RegExp('\n', 'g'), '<br />')
-        };
-    },
+    descriptors: computed(() => []),
 
     component: 'ember-error-handler/wsod-screen',
 
-    consume(error) {
-        const errors = this.get('errors');
-        errors.pushObject(this.parseError(error));
+    consume(descriptor) {
+        try {
+            const descriptors = this.get('descriptors');
+            descriptors.pushObject(descriptor);
 
-        if (!this.get('isRendered')) {
-            const component = getOwner(this).lookup('components:' + this.get('component'));
-            component.set('errors', errors);
-            component.append();
-            this.set('isRendered', true);
+            if (!this.get('isRendered')) {
+                let lookupKey;
+                const owner = getOwner(this);
+
+                lookupKey = 'component:' + this.get('component');
+                const component = owner.lookup(lookupKey);
+                if (!component) {
+                    throw Error(`Cannot instantiate wsod component '${lookupKey}'`);
+                }
+
+                lookupKey = 'template:components/' + this.get('component');
+                const layout = owner.lookup(lookupKey);
+                component.set('descriptors', descriptors);
+                if(layout) {
+                  component.set('layout', layout);
+                }
+                component.append();
+                this.set('isRendered', true);
+            }
+
+        } catch (e) {
+            throw new EmberErrorHandlerError().withPreviousError(e);
         }
 
         return true;

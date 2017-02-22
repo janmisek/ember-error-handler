@@ -1,2 +1,1 @@
-import consumer from 'ember-error-handler/consumer/console-consumer';
-export default consumer
+export {default} from 'ember-error-handler/consumer/console-consumer';

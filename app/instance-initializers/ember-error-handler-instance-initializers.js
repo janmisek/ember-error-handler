@@ -1,0 +1,1 @@
+export { default } from 'ember-error-handler/instance-initializers/ember-error-handler-instance-initializer';

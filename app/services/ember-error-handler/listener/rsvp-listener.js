@@ -1,2 +1,1 @@
-import listener from 'ember-error-handler/listener/rsvp-listener';
-export default listener
+export {default} from 'ember-error-handler/listener/rsvp-listener';
