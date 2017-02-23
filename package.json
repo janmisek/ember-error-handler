@@ -1,7 +1,7 @@
 {
   "name": "ember-error-handler",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.1.0",
+  "description": "Error handling for ambitious web applications",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -11,7 +11,7 @@
     "start": "ember server",
     "test": "ember try:each"
   },
-  "repository": "",
+  "repository": "https://github.com/janmisek/ember-error-handler",
   "engines": {
     "node": ">= 0.12.0"
   },
@@ -40,7 +40,9 @@
     "loader.js": "^4.0.10"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "error",
+    "exception"
   ],
   "dependencies": {
     "ember-cli-htmlbars": "^1.1.1",
