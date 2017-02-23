@@ -1,39 +1,55 @@
-# Ember-error-handler
 
-This README outlines the details of collaborating on this Ember addon.
+```
+  _____           _                                            _                     _ _           
+ | ____|_ __ ___ | |__   ___ _ __    ___ _ __ _ __ ___  _ __  | |__   __ _ _ __   __| | | ___ _ __ 
+ |  _| | '_ ` _ \| '_ \ / _ \ '__|  / _ \ '__| '__/ _ \| '__| | '_ \ / _` | '_ \ / _` | |/ _ \ '__|
+ | |___| | | | | | |_) |  __/ |    |  __/ |  | | | (_) | |    | | | | (_| | | | | (_| | |  __/ |   
+ |_____|_| |_| |_|_.__/ \___|_|     \___|_|  |_|  \___/|_|    |_| |_|\__,_|_| |_|\__,_|_|\___|_|   
+
+```                                                                                                  
+
+# Ember-error-handler - Error handling for ambitious web applications.
+
+Addon handles errors thrown in Ember application. It provides set listeners for thrown error. 
+Errors handled by listeners are passed to various consumers which could log the error, render error page or
+perform additional logic. 
+
+## Error page shown in devel environment  
+
+![alt tag](https://raw.githubusercontent.com/janmisek/ember-error-handler/master/github/error-dev.png)
+
+## Error page shown in production environment  
+
+![alt tag](https://raw.githubusercontent.com/janmisek/ember-error-handler/master/github/error-prod.png)
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd ember-error-handler`
-* `npm install`
-* `bower install`
-
-## Running
-
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-
-## Running Tests
-
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
+* `ember install ember-error-handler`
 
 ## Configuration
+
+### wsod-consumer - configure component shown when error is handled by environment
 
 ```
 # config/environment.js
 
 {
   ember-error-handler: {
-      "wsod-component": 'my-own-component-for-wsod-screen'
+      "wsod-component-production": 'my-own-component-for-wsod-screen-production'
+      "wsod-component-development": 'my-own-component-for-wsod-screen-development'
+      "wsod-component-": 'my-own-component-for-wsod-screen'
   }
 }
 ```
+
+## Extendability
+
+TODO
+
+## Listeners
+
+TODO
+
+## Consumers
+
+TODO
