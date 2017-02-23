@@ -29,6 +29,42 @@ perform additional logic.
 
 ## Configuration
 
+### configure listeners to use
+
+Define services to use as listeners. 
+Definition could be based on environment. 
+Service must extend `base-listener` class.
+
+```
+# config/environment.js
+
+if (environment === 'development') {
+  ENV['ember-error-handler'].listeners = [
+      'service:ember-error-handler/listener/window-listener',
+      'service:ember-error-handler/listener/ember-listener'
+  ];
+}
+```
+
+### configure consumers to use
+
+Define services to use as listeners. 
+Definition could be based on environment. 
+Service must extend `base-consumer`class.
+Consumers are executed in order.
+
+```
+# config/environment.js
+
+if (environment === 'development') {
+   ENV['ember-error-handler'].consumers = [
+     'service:ember-error-handler/consumer/wsod-consumer',
+     'service:ember-error-handler/consumer/console-consumer'
+   ];
+}
+```
+
+
 ### wsod-consumer - configure component shown when error is handled by environment
 
 ```

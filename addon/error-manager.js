@@ -8,17 +8,21 @@ const {computed, getOwner} = Ember;
 export default Ember.Service.extend(
     ConfigMixin,
     {
+        consumerKeys: computed(function() {
+            const configured = this.get('config')['consumers'];
+            return configured || [
+                'service:ember-error-handler/consumer/wsod-consumer',
+                'service:ember-error-handler/consumer/console-consumer'
+            ]
+        }),
 
-        consumerKeys: [
-            'service:ember-error-handler/consumer/wsod-consumer',
-            'service:ember-error-handler/consumer/console-consumer'
-        ],
-
-        listenerKeys: [
-            'service:ember-error-handler/listener/window-listener',
-            'service:ember-error-handler/listener/ember-listener',
-            'service:ember-error-handler/listener/rsvp-listener'
-        ],
+        listenerKeys: computed(function() {
+            const configured = this.get('config')['listeners'];
+            return configured || [
+                    'service:ember-error-handler/listener/window-listener',
+                    'service:ember-error-handler/listener/ember-listener'
+                ]            
+        }),
 
         consumed: computed(() => []),
 
