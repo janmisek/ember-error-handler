@@ -14,13 +14,14 @@ Addon handles errors thrown in Ember application. It provides set listeners for 
 Errors handled by listeners are passed to various consumers which could log the error, render error page or
 perform additional logic. 
 
-## Error page shown in devel environment  
+## Non catched error page shown in production environment  
+
+![alt tag](https://raw.githubusercontent.com/janmisek/ember-error-handler/master/github/error-prod.png)
+
+## Non catched error page shown in development environment  
 
 ![alt tag](https://raw.githubusercontent.com/janmisek/ember-error-handler/master/github/error-dev.png)
 
-## Error page shown in production environment  
-
-![alt tag](https://raw.githubusercontent.com/janmisek/ember-error-handler/master/github/error-prod.png)
 
 ## Installation
 
@@ -53,3 +54,7 @@ TODO
 ## Consumers
 
 TODO
+
+## Ember-exex
+
+Addon plays nicely with Exceptional Exceptions addon: https://github.com/janmisek/ember-exex
