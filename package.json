@@ -1,7 +1,7 @@
 {
   "name": "ember-error-handler",
   "version": "0.1.0",
-  "description": "Error handling for ambitious web applications",
+  "description": "WIP: Error handling for ambitious web applications",
   "directories": {
     "doc": "doc",
     "test": "tests"
