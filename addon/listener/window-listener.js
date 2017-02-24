@@ -4,7 +4,7 @@ import ErrorDescriptor from '../error-descriptor';
 export default BaseListener.extend({
 
     listen (manager) {
-        window.onerror = function (message, file, line, column, error) {
+        window.onerror = (message, file, line, column, error) => {
             if (!error) {
                 error = {
                     message: message,
@@ -20,6 +20,7 @@ export default BaseListener.extend({
                     error
                 })
             );
+            return true;
         };
     }
 });
