@@ -1,5 +1,5 @@
 import Ember from 'ember';
-const {getOwner, computed} = Ember;
+const {getOwner, computed, inject} = Ember;
 
 export const getConfig = (instance) => {
     return getOwner(instance).resolveRegistration('config:environment')['ember-error-handler'] || {};
@@ -20,13 +20,11 @@ export const ConfigMixin = Ember.Mixin.create({
 });
 
 export const InternalErrorManagmentMixin = Ember.Mixin.create({
+
+    internalLogger: Ember.inject.service('ember-error-handler.logger.internal-logger'),
+
     logInternalError(context, error) {
-        // eslint-disable-next-line no-console
-        if (error) {
-            console.error('ember-error-handler:', error.stack);
-        } else {
-            console.error('ember-error-handler:', 'Failed with undefined error');
-        }
+        this.get('internalLogger').log(context, error)
     }
 });
 
