@@ -12,7 +12,7 @@ export default Ember.Service.extend(
         consumerKeys: computed(function () {
             const configured = this.get('config')['consumers'];
             return configured || [
-                    // 'service:ember-error-handler/consumer/wsod-consumer',
+                    'service:ember-error-handler/consumer/wsod-consumer',
                     'service:ember-error-handler/consumer/console-consumer'
                 ]
         }),
