@@ -1,18 +1,12 @@
-
-```
-  _____           _                                            _                     _ _           
- | ____|_ __ ___ | |__   ___ _ __    ___ _ __ _ __ ___  _ __  | |__   __ _ _ __   __| | | ___ _ __ 
- |  _| | '_ ` _ \| '_ \ / _ \ '__|  / _ \ '__| '__/ _ \| '__| | '_ \ / _` | '_ \ / _` | |/ _ \ '__|
- | |___| | | | | | |_) |  __/ |    |  __/ |  | | | (_) | |    | | | | (_| | | | | (_| | |  __/ |   
- |_____|_| |_| |_|_.__/ \___|_|     \___|_|  |_|  \___/|_|    |_| |_|\__,_|_| |_|\__,_|_|\___|_|   
-
-```                                                                                                  
-
 # Ember-error-handler - Error handling for ambitious web applications.
 
-Addon handles errors thrown in Ember application. It provides set listeners for thrown error. 
+Addon handles uncatched errors. Handled error can be displayed on customizable error page 
+or passed trhough custom logic. Addon includes consumers for local and remote logging of errors. 
+
+# How it works
+Errors thrown are catched by listener bound to error producers (window, Ember ...).  
 Errors handled by listeners are passed to various consumers which could log the error, render error page or
-perform additional logic. 
+perform additional logic. Customers and producers are fully customizable. 
 
 ## Non catched error page shown in production environment  
 
@@ -26,6 +20,8 @@ perform additional logic.
 ## Installation
 
 * `ember install ember-error-handler`
+
+then throw error somewhere in application and watch screen and console.
 
 ## Configuration
 
