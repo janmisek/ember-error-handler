@@ -31,7 +31,7 @@ Define services to use as listeners.
 Definition could be based on environment. 
 Service must extend `base-listener` class.
 
-```
+```javascript
 # config/environment.js
 
 if (environment === 'development') {
@@ -49,7 +49,7 @@ Definition could be based on environment.
 Service must extend `base-consumer`class.
 Consumers are executed in order.
 
-```
+```javascript
 # config/environment.js
 
 if (environment === 'development') {
@@ -63,7 +63,7 @@ if (environment === 'development') {
 
 ### wsod-consumer - configure component shown when error is handled by environment
 
-```
+```javascript
 # config/environment.js
 
 {
