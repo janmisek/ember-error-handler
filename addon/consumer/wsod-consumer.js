@@ -36,6 +36,7 @@ export default BaseConsumer.extend({
   }),
 
   consume(descriptor) {
+
     const descriptors = this.get('descriptors');
     descriptors.pushObject(descriptor);
 
