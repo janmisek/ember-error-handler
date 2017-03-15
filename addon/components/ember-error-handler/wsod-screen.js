@@ -8,11 +8,11 @@ export default Ember.Component.extend({
   descriptors: null,
 
   message: computed(function () {
-    return this.get('descriptors.firstObject.error.message');
+    return this.get('descriptors.firstObject.normalizedMessage');
   }),
 
   stackTrace: computed(function () {
-    return (this.get('descriptors.firstObject.error.stack') || '')
+    return (this.get('descriptors.firstObject.normalizedStack') || '')
       .replace(new RegExp('\\n', 'g'), '<br />');
   })
 });
