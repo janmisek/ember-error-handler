@@ -12,7 +12,10 @@ export default Ember.Component.extend({
   }),
 
   stackTrace: computed(function () {
-    return (this.get('descriptors.firstObject.normalizedStack') || '')
+    const stackTrace = (this.get('descriptors.firstObject.normalizedStack') || '')
       .replace(new RegExp('\\n', 'g'), '<br />');
+
+    return stackTrace ? stackTrace : 'No stack trace available';
+
   })
 });
