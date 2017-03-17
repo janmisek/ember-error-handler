@@ -1,12 +1,12 @@
 # Ember-error-handler - Error handling for ambitious web applications.
 
 Addon handles uncatched errors. Handled error can be displayed on customizable error page 
-or passed trhough custom logic. Addon includes consumers for local and remote logging of errors. 
+or passed through custom logic. By default addon includes consumers for local and remote logging of errors. 
 
 # How it works
 Errors thrown are catched by listener bound to error producers (window, Ember ...).  
 Errors handled by listeners are passed to various consumers which could log the error, render error page or
-perform additional logic. Customers and producers are fully customizable. 
+perform additional logic. Customers and listeners are fully customizable. 
 
 ## Non catched error page shown in production environment  
 
