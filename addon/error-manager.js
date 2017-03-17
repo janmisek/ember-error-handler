@@ -2,6 +2,7 @@ import Ember from 'ember';
 import {EmberErrorHandlerError} from './errors';
 import BaseConsumer from './consumer/base-consumer';
 import BaseListener from './listener/base-listener';
+import ErrorDescriptor from './error-descriptor';
 import {ConfigMixin, InternalErrorManagmentMixin} from './-tools';
 const {computed, getOwner} = Ember;
 
@@ -20,8 +21,8 @@ export default Ember.Service.extend(
         listenerKeys: computed(function () {
             const configured = this.get('config')['listeners'];
             return configured || [
-                    'service:ember-error-handler/listener/window-listener',
-                    'service:ember-error-handler/listener/ember-listener'
+                   'service:ember-error-handler/listener/window-listener',
+                   'service:ember-error-handler/listener/ember-listener'
                 ]
         }),
 
@@ -78,6 +79,16 @@ export default Ember.Service.extend(
 
 
         consume(descriptor) {
+
+            // if descriptor is not provided we convert error to descriptor instance
+            if (!(descriptor instanceof ErrorDescriptor)) {
+                descriptor = ErrorDescriptor.create({
+                    source: 'custom',
+                    listener: null,
+                    error: descriptor
+                })
+            }
+
             try {
                 if (!this.isConsumed(descriptor)) {
 
