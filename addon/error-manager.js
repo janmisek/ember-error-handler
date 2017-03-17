@@ -105,12 +105,14 @@ export default Ember.Service.extend(
                         }
                     });
                 } else {
-                    throw new EmberErrorHandlerError('Not consumable error');
+                    throw new EmberErrorHandlerError('Already consumed')
+                        .withPreviousError(descriptor.get('error'));
                 }
             } catch (e) {
                 this.logInternalError(
                     this,
-                    new EmberErrorHandlerError('Error consumation failed').withPreviousError(e)
+                    new EmberErrorHandlerError('Error consumation failed')
+                        .withPreviousError(e)
                 );
             }
         }
