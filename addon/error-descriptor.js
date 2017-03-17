@@ -1,18 +1,51 @@
 import Ember from 'ember';
-import { extractName } from 'ember-types/classes';
+import {extractName} from 'ember-types/classes';
 const {computed} = Ember;
 
 export default Ember.Object.extend({
 
     source: null,
 
-    normalizedName: computed(function() {
+    normalizedName: computed(function () {
         const error = this.get('error');
         return extractName(error) || String(error) || 'Unknown error';
     }),
-    
-    isError: computed(function() {
-       return this.get('error') instanceof Error; 
+
+    isError: computed(function () {
+        return this.get('error') instanceof Error;
+    }),
+
+    additionalData: computed(function () {
+
+        const namesUsed = [];
+        const error = this.get('error');
+        let collected = null;
+
+        const getErrorName = (error) => {
+            const root = error.name || 'error';
+            let name;
+            let index = 0;
+            do {
+                name = root + ':' + index;
+                index++;
+            } while (namesUsed.indexOf(name) !== -1)
+
+            return name;
+        };
+
+        const collectAdditionalData = (error) => {
+            if (error && error.additionalData) {
+                collected = collected || {};
+                collected[getErrorName(error)] = error.additionalData;
+                if (error.previous) {
+                    collectAdditionalData(error.previous);
+                }
+            }
+        };
+
+       collectAdditionalData(error);
+
+        return collected;
     }),
 
     normalizedMessage: computed(function () {
@@ -66,7 +99,7 @@ export default Ember.Object.extend({
             return this.get('normalizedMessage') + ' (no stacktrace available)';
         }
 
-        return  'Thrown with no additional info available';
+        return 'Thrown with no additional info available';
     }),
 
     error: null
