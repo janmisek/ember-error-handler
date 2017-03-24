@@ -1,5 +1,5 @@
 import Ember from 'ember';
-const {getOwner, computed, inject} = Ember;
+const {getOwner, computed} = Ember;
 
 export const getConfig = (instance) => {
     return getOwner(instance).resolveRegistration('config:environment')['ember-error-handler'] || {};

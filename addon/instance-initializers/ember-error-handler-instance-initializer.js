@@ -1,5 +1,3 @@
-import Ember from 'ember';
-
 export default {
   name: 'ember-error-handler-instance-initializer',
   initialize( owner ) {
