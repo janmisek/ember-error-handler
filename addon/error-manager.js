@@ -10,6 +10,14 @@ export default Ember.Service.extend(
     ConfigMixin,
     InternalErrorManagmentMixin,
     {
+        enabled: computed(
+            'environment',
+            function () {
+                return true;
+                return this.get('environment') !== 'test';
+            }
+        ),
+
         consumerKeys: computed(function () {
             const configured = this.get('config')['consumers'];
             return configured || [
@@ -61,9 +69,11 @@ export default Ember.Service.extend(
 
         listen() {
             try {
-                this.get('listeners').forEach((listener) => {
-                    listener.listen(this);
-                })
+                if (this.get('enabled')) {
+                    this.get('listeners').forEach((listener) => {
+                        listener.listen(this);
+                    })
+                }
             } catch (e) {
                 this.logInternalError(
                     this,
