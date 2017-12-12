@@ -13,7 +13,6 @@ export default Ember.Service.extend(
         enabled: computed(
             'environment',
             function () {
-                return true;
                 return this.get('environment') !== 'test';
             }
         ),
