@@ -42,6 +42,8 @@ export default BaseListener.extend({
                     error
                 })
             );
+
+            event.preventDefault();
         });
     }
 });
