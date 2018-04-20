@@ -3,12 +3,14 @@ import ErrorDescriptor from '../error-descriptor';
 
 export default BaseListener.extend({
 
-    listen (manager) {
+    listen(manager) {
+
+        // window listener
         window.onerror = (message, file, line, column, error) => {
             if (!error) {
                 error = {
                     message: message,
-                    name: error,
+                    name: String(error),
                     stack: message + ' at ' + "\n" + file + ':' + line + ':' + column
                 };
             }
@@ -22,6 +24,25 @@ export default BaseListener.extend({
             );
             return true;
         };
+
+        // unhandled promise listener
+        window.addEventListener('unhandledrejection', function (event) {
+            let error = event.reason;
+            if (!error) {
+                error = {
+                    message: message,
+                    name: String(error),
+                    stack: ''
+                };
+            }
+            manager.consume(
+                ErrorDescriptor.create({
+                    source: 'window',
+                    listener: this,
+                    error
+                })
+            );
+        });
     }
 });
 
