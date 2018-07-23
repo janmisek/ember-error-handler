@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {extractName} from 'ember-types/classes';
+import {extractName} from './-tools';
 const {computed} = Ember;
 
 export default Ember.Object.extend({

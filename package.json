@@ -41,7 +41,6 @@
     "exception"
   ],
   "dependencies": {
-    "ember-types": "^0.2.0",
     "ember-exex": "^0.1.11",
     "ember-cli-htmlbars": "~2.0.3",
     "ember-cli-babel": "~6.12.0"
