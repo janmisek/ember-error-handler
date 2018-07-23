@@ -1,6 +1,6 @@
 {
   "name": "ember-error-handler",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Addon handles uncatched errors. Handled error can be displayed on customizable error page or passed through custom logic. By default addon includes consumers for local and remote logging of errors.",
   "directories": {
     "doc": "doc",
@@ -26,10 +26,10 @@
     "ember-cli-qunit": "~4.3.2",
     "ember-cli-shims": "~1.2.0",
     "ember-cli-test-loader": "~2.2.0",
-    "ember-source": "~3.0.0",
     "ember-export-application-global": "~2.0.0",
     "ember-load-initializers": "~1.0.0",
     "ember-resolver": "~4.5.0",
+    "ember-source": "~3.0.0",
     "loader.js": "~4.6.0"
   },
   "keywords": [
@@ -41,9 +41,9 @@
     "exception"
   ],
   "dependencies": {
-    "ember-exex": "^0.1.11",
+    "ember-cli-babel": "~6.12.0",
     "ember-cli-htmlbars": "~2.0.3",
-    "ember-cli-babel": "~6.12.0"
+    "ember-exex": "^0.1.11"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
