@@ -35,10 +35,12 @@ Service must extend `base-listener` class.
 # config/environment.js
 
 if (environment === 'development') {
-  ENV['ember-error-handler'].listeners = [
-      'service:ember-error-handler/listener/window-listener',
-      'service:ember-error-handler/listener/ember-listener'
-  ];
+  ENV['ember-error-handler'] = {
+      listeners: [
+          'service:ember-error-handler/listener/window-listener',
+          'service:ember-error-handler/listener/ember-listener'
+      ]
+  };
 }
 ```
 
@@ -53,10 +55,12 @@ Consumers are executed in order.
 # config/environment.js
 
 if (environment === 'development') {
-   ENV['ember-error-handler'].consumers = [
-     'service:ember-error-handler/consumer/wsod-consumer',
-     'service:ember-error-handler/consumer/console-consumer'
-   ];
+   ENV['ember-error-handler'] = {
+        consumers: [
+             'service:ember-error-handler/consumer/wsod-consumer',
+             'service:ember-error-handler/consumer/console-consumer'
+        ]       
+   }
 }
 ```
 
@@ -67,7 +71,7 @@ if (environment === 'development') {
 # config/environment.js
 
 {
-  ember-error-handler: {
+  "ember-error-handler": {
       "wsod-component-production": 'my-own-component-for-wsod-screen-production'
       "wsod-component-development": 'my-own-component-for-wsod-screen-development'
       "wsod-component-": 'my-own-component-for-wsod-screen'

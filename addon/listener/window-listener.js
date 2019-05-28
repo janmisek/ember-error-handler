@@ -30,7 +30,7 @@ export default BaseListener.extend({
             let error = event.reason;
             if (!error) {
                 error = {
-                    message: message,
+                    message: error.message,
                     name: String(error),
                     stack: ''
                 };
